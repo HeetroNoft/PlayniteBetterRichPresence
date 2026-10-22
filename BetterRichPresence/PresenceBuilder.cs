@@ -91,12 +91,6 @@ namespace BetterRichPresence
                 activity["assets"] = assets;
             }
 
-            var button = settings.ShowLinkButton ? LinkButton(game) : null;
-            if (button != null)
-            {
-                activity["buttons"] = new[] { button };
-            }
-
             return new Presence
             {
                 ApplicationId = app?.Id ?? settings.FallbackApplicationId,
@@ -220,20 +214,6 @@ namespace BetterRichPresence
             }
 
             return app?.IconUrl;
-        }
-
-        private Dictionary<string, object> LinkButton(Game game)
-        {
-            var links = game.Links?.Where(l => IsHttpUrl(l.Url)).ToList();
-            if (links == null || links.Count == 0)
-            {
-                return null;
-            }
-
-            var link = links.FirstOrDefault(l => string.Equals(l.Name, settings.PreferredLinkName, StringComparison.OrdinalIgnoreCase))
-                ?? links[0];
-            var label = string.IsNullOrWhiteSpace(link.Name) ? "View game" : link.Name;
-            return new Dictionary<string, object> { ["label"] = Truncate(label, 32), ["url"] = link.Url };
         }
 
         internal static bool IsHttpUrl(string value)

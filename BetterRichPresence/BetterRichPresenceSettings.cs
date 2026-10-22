@@ -95,12 +95,6 @@ namespace BetterRichPresence
         private string imgbbApiKey = string.Empty;
         public string ImgbbApiKey { get => imgbbApiKey; set => SetValue(ref imgbbApiKey, value?.Trim()); }
 
-        private bool showLinkButton = false;
-        public bool ShowLinkButton { get => showLinkButton; set => SetValue(ref showLinkButton, value); }
-
-        private string preferredLinkName = "Store";
-        public string PreferredLinkName { get => preferredLinkName; set => SetValue(ref preferredLinkName, value); }
-
         private bool showIdlePresence = true;
         public bool ShowIdlePresence { get => showIdlePresence; set => SetValue(ref showIdlePresence, value); }
 

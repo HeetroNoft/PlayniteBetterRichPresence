@@ -112,11 +112,6 @@
                     When this is off, or before the upload finishes, the Steam cover or Discord's icon for the game is shown instead.
                 </TextBlock>
             </StackPanel>
-            <DockPanel Margin="0,4">
-                <CheckBox Content="Add a button opening the game link named" IsChecked="{Binding Settings.ShowLinkButton}"
-                          VerticalAlignment="Center" />
-                <TextBox Text="{Binding Settings.PreferredLinkName}" Margin="10,0,0,0" Width="150" HorizontalAlignment="Left" />
-            </DockPanel>
 
             <TextBlock Style="{StaticResource Header}" Text="When no game is running" />
             <CheckBox Content="Show that I'm browsing Playnite" IsChecked="{Binding Settings.ShowIdlePresence}" />
