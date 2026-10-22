@@ -1,0 +1,19 @@
+AddonId: BetterRichPresence_48a8ac35-6a9b-467e-ab79-153ed2fb6cab
+Type: Generic
+InstallerManifestUrl: https://raw.githubusercontent.com/HeetroNoft/PlayniteBetterRichPresence/main/installer.yaml
+Name: Better Rich Presence
+Author: Heet
+ShortDescription: Discord Rich Presence that shows the game you're playing, with your Playnite artwork and custom text.
+Description: |
+  Replaces Playnite's built-in Discord Rich Presence, which always shows "Playing Playnite".
+
+  - For games Discord knows, your profile shows "Playing <game>".
+  - Shows the icon or cover you picked in Playnite, with an optional Playnite badge.
+  - Both lines are templates: {name}, {library}, {platform}, {playtime}, {completion}…
+  - Optional presence while browsing your library.
+  - Hide a game from Discord, or force its Discord application, from its context menu.
+Tags: ['Discord', 'Rich Presence', 'Social']
+SourceUrl: https://github.com/HeetroNoft/PlayniteBetterRichPresence
+Links:
+    GitHub: https://github.com/HeetroNoft/PlayniteBetterRichPresence
+    Releases: https://github.com/HeetroNoft/PlayniteBetterRichPresence/releases
