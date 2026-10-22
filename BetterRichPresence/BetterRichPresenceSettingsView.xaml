@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BetterRichPresence">
+    <!-- Texts come from Localization/<language>.xaml. -->
     <UserControl.Resources>
         <Style TargetType="TextBlock" x:Key="Header" BasedOn="{StaticResource {x:Type TextBlock}}">
             <!-- BasedOn finds WPF's default TextBlock style, not the theme's: take the theme's text color explicitly. -->
@@ -16,29 +17,28 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
-            <CheckBox Content="Share my activity on Discord" IsChecked="{Binding Settings.Enabled}" />
+            <CheckBox Content="{DynamicResource LOC_BRP_Enabled}" IsChecked="{Binding Settings.Enabled}" />
 
-            <TextBlock Style="{StaticResource Header}" Text="Discord application" />
-            <CheckBox Content="Show &quot;Playing &lt;game&gt;&quot; when Discord knows the game"
+            <TextBlock Style="{StaticResource Header}" Text="{DynamicResource LOC_BRP_HeaderApplication}" />
+            <CheckBox Content="{DynamicResource LOC_BRP_UseGameApplications}"
                       IsChecked="{Binding Settings.UseGameApplications}" />
             <DockPanel Margin="0,4">
-                <Button Content="Refresh list" DockPanel.Dock="Left" Command="{Binding RefreshCatalogCommand}" />
+                <Button Content="{DynamicResource LOC_BRP_RefreshCatalog}" DockPanel.Dock="Left" Command="{Binding RefreshCatalogCommand}" />
                 <TextBlock Text="{Binding CatalogStatus}" VerticalAlignment="Center" Margin="10,0" />
             </DockPanel>
             <DockPanel Margin="0,4">
-                <TextBlock Text="Fallback application ID:" VerticalAlignment="Center" Width="180" />
+                <TextBlock Text="{DynamicResource LOC_BRP_FallbackApplicationId}" VerticalAlignment="Center" Width="180" />
                 <TextBox Text="{Binding Settings.FallbackApplicationId}" />
             </DockPanel>
             <DockPanel Margin="0,4">
-                <TextBlock Text="Fallback image:" VerticalAlignment="Center" Width="180" />
+                <TextBlock Text="{DynamicResource LOC_BRP_FallbackImage}" VerticalAlignment="Center" Width="180" />
                 <TextBox Text="{Binding Settings.FallbackImage}" />
             </DockPanel>
-            <Button Content="Reset to the plugin's application" HorizontalAlignment="Left" Margin="180,4,0,4"
+            <Button Content="{DynamicResource LOC_BRP_ResetApplication}" HorizontalAlignment="Left" Margin="180,4,0,4"
                     Command="{Binding ResetDiscordApplicationCommand}" />
-            <TextBlock TextWrapping="Wrap" Opacity="0.7"
-                       Text="Used for games Discord doesn't know, and when browsing. The image is an asset key of the fallback application (Rich Presence → Art Assets in the Discord Developer Portal) or an image URL." />
+            <TextBlock TextWrapping="Wrap" Opacity="0.7" Text="{DynamicResource LOC_BRP_FallbackHelp}" />
 
-            <TextBlock Style="{StaticResource Header}" Text="Text when Discord knows the game" />
+            <TextBlock Style="{StaticResource Header}" Text="{DynamicResource LOC_BRP_HeaderMatched}" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="180" />
@@ -47,20 +47,20 @@
                 <Grid.RowDefinitions>
                     <RowDefinition /><RowDefinition /><RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Text="Details:" VerticalAlignment="Center" />
+                <TextBlock Text="{DynamicResource LOC_BRP_Details}" VerticalAlignment="Center" />
                 <TextBox Grid.Column="1" Margin="0,2" Text="{Binding Settings.MatchedDetails}" />
-                <TextBlock Grid.Row="1" Text="State:" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{DynamicResource LOC_BRP_State}" VerticalAlignment="Center" />
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2" Text="{Binding Settings.MatchedState}" />
-                <TextBlock Grid.Row="2" Text="Member list shows:" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="2" Text="{DynamicResource LOC_BRP_MemberListShows}" VerticalAlignment="Center" />
                 <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,2" SelectedValuePath="Tag"
                           SelectedValue="{Binding Settings.MatchedStatusDisplay}">
-                    <ComboBoxItem Content="Game name" Tag="{x:Static local:StatusDisplay.Name}" />
-                    <ComboBoxItem Content="State" Tag="{x:Static local:StatusDisplay.State}" />
-                    <ComboBoxItem Content="Details" Tag="{x:Static local:StatusDisplay.Details}" />
+                    <ComboBoxItem Content="{DynamicResource LOC_BRP_StatusGameName}" Tag="{x:Static local:StatusDisplay.Name}" />
+                    <ComboBoxItem Content="{DynamicResource LOC_BRP_StatusState}" Tag="{x:Static local:StatusDisplay.State}" />
+                    <ComboBoxItem Content="{DynamicResource LOC_BRP_StatusDetails}" Tag="{x:Static local:StatusDisplay.Details}" />
                 </ComboBox>
             </Grid>
 
-            <TextBlock Style="{StaticResource Header}" Text="Text with the fallback application" />
+            <TextBlock Style="{StaticResource Header}" Text="{DynamicResource LOC_BRP_HeaderFallback}" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="180" />
@@ -69,52 +69,47 @@
                 <Grid.RowDefinitions>
                     <RowDefinition /><RowDefinition /><RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Text="Details:" VerticalAlignment="Center" />
+                <TextBlock Text="{DynamicResource LOC_BRP_Details}" VerticalAlignment="Center" />
                 <TextBox Grid.Column="1" Margin="0,2" Text="{Binding Settings.FallbackDetails}" />
-                <TextBlock Grid.Row="1" Text="State:" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{DynamicResource LOC_BRP_State}" VerticalAlignment="Center" />
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2" Text="{Binding Settings.FallbackState}" />
-                <TextBlock Grid.Row="2" Text="Member list shows:" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="2" Text="{DynamicResource LOC_BRP_MemberListShows}" VerticalAlignment="Center" />
                 <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,2" SelectedValuePath="Tag"
                           SelectedValue="{Binding Settings.FallbackStatusDisplay}">
-                    <ComboBoxItem Content="Application name" Tag="{x:Static local:StatusDisplay.Name}" />
-                    <ComboBoxItem Content="State" Tag="{x:Static local:StatusDisplay.State}" />
-                    <ComboBoxItem Content="Details" Tag="{x:Static local:StatusDisplay.Details}" />
+                    <ComboBoxItem Content="{DynamicResource LOC_BRP_StatusApplicationName}" Tag="{x:Static local:StatusDisplay.Name}" />
+                    <ComboBoxItem Content="{DynamicResource LOC_BRP_StatusState}" Tag="{x:Static local:StatusDisplay.State}" />
+                    <ComboBoxItem Content="{DynamicResource LOC_BRP_StatusDetails}" Tag="{x:Static local:StatusDisplay.Details}" />
                 </ComboBox>
             </Grid>
 
-            <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Opacity="0.7"
-                       Text="Placeholders: {name} {platform} {source} {library} {playtime} {playcount} {completion} {genre} {developer} {year} {score}. Separators next to an empty value are removed, and a line whose values are all empty is hidden." />
+            <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Opacity="0.7" Text="{DynamicResource LOC_BRP_GamePlaceholders}" />
 
-            <TextBlock Style="{StaticResource Header}" Text="Display" />
-            <CheckBox Content="Show elapsed time for the session" IsChecked="{Binding Settings.ShowElapsedTime}" />
-            <CheckBox Content="Show the Playnite logo as a small badge on the game image"
-                      IsChecked="{Binding Settings.ShowPlayniteBadge}" />
-            <CheckBox Content="Show a game image" IsChecked="{Binding Settings.ShowGameImage}" />
+            <TextBlock Style="{StaticResource Header}" Text="{DynamicResource LOC_BRP_HeaderDisplay}" />
+            <CheckBox Content="{DynamicResource LOC_BRP_ShowElapsedTime}" IsChecked="{Binding Settings.ShowElapsedTime}" />
+            <CheckBox Content="{DynamicResource LOC_BRP_ShowPlayniteBadge}" IsChecked="{Binding Settings.ShowPlayniteBadge}" />
+            <CheckBox Content="{DynamicResource LOC_BRP_ShowGameImage}" IsChecked="{Binding Settings.ShowGameImage}" />
             <StackPanel Margin="24,0,0,0" IsEnabled="{Binding Settings.ShowGameImage}">
                 <DockPanel Margin="0,4">
-                    <TextBlock Text="Playnite image to show:" VerticalAlignment="Center" Width="156" />
+                    <TextBlock Text="{DynamicResource LOC_BRP_GameImageKind}" VerticalAlignment="Center" Width="156" />
                     <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding Settings.GameImage}" Width="150" HorizontalAlignment="Left">
-                        <ComboBoxItem Content="Icon" Tag="{x:Static local:GameImageKind.Icon}" />
-                        <ComboBoxItem Content="Cover" Tag="{x:Static local:GameImageKind.Cover}" />
+                        <ComboBoxItem Content="{DynamicResource LOC_BRP_ImageIcon}" Tag="{x:Static local:GameImageKind.Icon}" />
+                        <ComboBoxItem Content="{DynamicResource LOC_BRP_ImageCover}" Tag="{x:Static local:GameImageKind.Cover}" />
                     </ComboBox>
                 </DockPanel>
-                <CheckBox Content="Upload Playnite images to ImgBB so Discord can display them"
-                          IsChecked="{Binding Settings.UploadLocalImages}" />
+                <CheckBox Content="{DynamicResource LOC_BRP_UploadImages}" IsChecked="{Binding Settings.UploadLocalImages}" />
                 <DockPanel Margin="24,4,0,0" IsEnabled="{Binding Settings.UploadLocalImages}">
-                    <TextBlock Text="ImgBB API key:" VerticalAlignment="Center" Width="132" />
+                    <TextBlock Text="{DynamicResource LOC_BRP_ImgbbApiKey}" VerticalAlignment="Center" Width="132" />
                     <TextBox Text="{Binding Settings.ImgbbApiKey}" />
                 </DockPanel>
                 <TextBlock TextWrapping="Wrap" Opacity="0.7" Margin="24,2,0,0">
-                    Without a key, nothing is uploaded.
-                    Discord can only show images available online. Each image is converted to PNG and uploaded once to ImgBB: anyone with the link can see it.
-                    Get a free API key at <Hyperlink NavigateUri="https://api.imgbb.com/" RequestNavigate="Hyperlink_RequestNavigate">api.imgbb.com</Hyperlink>
-                    (sign in, then "Get API key").
-                    When this is off, or before the upload finishes, the Steam cover or Discord's icon for the game is shown instead.
+                    <Run Text="{DynamicResource LOC_BRP_UploadHelpBefore}" />
+                    <Hyperlink NavigateUri="https://api.imgbb.com/" RequestNavigate="Hyperlink_RequestNavigate">api.imgbb.com</Hyperlink>
+                    <Run Text="{DynamicResource LOC_BRP_UploadHelpAfter}" />
                 </TextBlock>
             </StackPanel>
 
-            <TextBlock Style="{StaticResource Header}" Text="When no game is running" />
-            <CheckBox Content="Show that I'm browsing Playnite" IsChecked="{Binding Settings.ShowIdlePresence}" />
+            <TextBlock Style="{StaticResource Header}" Text="{DynamicResource LOC_BRP_HeaderIdle}" />
+            <CheckBox Content="{DynamicResource LOC_BRP_ShowIdlePresence}" IsChecked="{Binding Settings.ShowIdlePresence}" />
             <Grid IsEnabled="{Binding Settings.ShowIdlePresence}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="180" />
@@ -123,17 +118,16 @@
                 <Grid.RowDefinitions>
                     <RowDefinition /><RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Text="Details:" VerticalAlignment="Center" />
+                <TextBlock Text="{DynamicResource LOC_BRP_Details}" VerticalAlignment="Center" />
                 <TextBox Grid.Column="1" Margin="0,2" Text="{Binding Settings.IdleDetails}" />
-                <TextBlock Grid.Row="1" Text="State:" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{DynamicResource LOC_BRP_State}" VerticalAlignment="Center" />
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2" Text="{Binding Settings.IdleState}" />
             </Grid>
-            <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Opacity="0.7"
-                       Text="Placeholders: {games} games in the library, {installed} installed games, {favorites} favorite games, {played} games played at least once, {playtime} total playtime. Hidden games are not counted." />
+            <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Opacity="0.7" Text="{DynamicResource LOC_BRP_IdlePlaceholders}" />
 
             <Separator Margin="0,24,0,8" Opacity="0.3" />
             <TextBlock HorizontalAlignment="Center" Opacity="0.7">
-                Better Rich Presence by Heet ·
+                <Run Text="{DynamicResource LOC_BRP_Signature}" />
                 <Hyperlink NavigateUri="https://github.com/HeetroNoft" RequestNavigate="Hyperlink_RequestNavigate">github.com/HeetroNoft</Hyperlink>
             </TextBlock>
         </StackPanel>

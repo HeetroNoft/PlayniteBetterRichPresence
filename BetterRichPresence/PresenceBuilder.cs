@@ -1,4 +1,5 @@
 using BetterRichPresence.Discord;
+using BetterRichPresence.Localization;
 using Playnite.SDK.Models;
 using System;
 using System.Collections.Generic;
@@ -77,7 +78,7 @@ namespace BetterRichPresence
                     // Asset keys only resolve inside their own application, so games Discord
                     // knows (their own application) get the logo by URL instead.
                     assets["small_image"] = fallbackImage ?? BetterRichPresenceSettings.PlayniteLogoUrl;
-                    assets["small_text"] = "via Playnite";
+                    assets["small_text"] = Loc.Get("LOC_BRP_BadgeText");
                 }
             }
             else if (fallbackImage != null)

@@ -1,4 +1,5 @@
 using BetterRichPresence.Discord;
+using BetterRichPresence.Localization;
 using Playnite.SDK;
 using Playnite.SDK.Events;
 using Playnite.SDK.Plugins;
@@ -33,6 +34,8 @@ namespace BetterRichPresence
 
         public BetterRichPresencePlugin(IPlayniteAPI api) : base(api)
         {
+            // Before the settings: their default texts are translated.
+            Loc.Load(api.ApplicationSettings.Language);
             Catalog = new DetectableAppsCatalog(GetPluginUserDataPath());
             imageHost = new ImageHost(GetPluginUserDataPath());
             settingsViewModel = new BetterRichPresenceSettingsViewModel(this);
@@ -223,7 +226,7 @@ namespace BetterRichPresence
             yield return new GameMenuItem
             {
                 MenuSection = MenuSection,
-                Description = allHidden ? "Share activity on Discord" : "Hide activity from Discord",
+                Description = Loc.Get(allHidden ? "LOC_BRP_MenuShare" : "LOC_BRP_MenuHide"),
                 Action = menuArgs =>
                 {
                     foreach (var game in games)
@@ -251,13 +254,13 @@ namespace BetterRichPresence
             yield return new GameMenuItem
             {
                 MenuSection = MenuSection,
-                Description = "Set Discord application ID…",
+                Description = Loc.Get("LOC_BRP_MenuSetApplication"),
                 Action = menuArgs =>
                 {
                     Settings.ApplicationOverrides.TryGetValue(single.Id, out var current);
                     var suggestion = current ?? Catalog.Find(single.Name, null, PresenceBuilder.SteamAppId(single))?.Id ?? string.Empty;
                     var result = PlayniteApi.Dialogs.SelectString(
-                        "Discord application ID to use for this game.\nLeave empty to detect it automatically.",
+                        Loc.Get("LOC_BRP_SetApplicationPrompt"),
                         single.Name,
                         suggestion);
                     if (!result.Result)
@@ -276,7 +279,7 @@ namespace BetterRichPresence
                     }
                     else
                     {
-                        PlayniteApi.Dialogs.ShowErrorMessage("A Discord application ID is a number.", MenuSection);
+                        PlayniteApi.Dialogs.ShowErrorMessage(Loc.Get("LOC_BRP_InvalidApplicationId"), MenuSection);
                         return;
                     }
 
@@ -304,7 +307,7 @@ namespace BetterRichPresence
                 {
                     PlayniteApi.Notifications.Add(new NotificationMessage(
                         "BetterRichPresence_BuiltIn",
-                        "Better Rich Presence: Playnite's built-in Discord presence is also enabled, so Discord may show two activities. Close Playnite and set \"DiscordPresenceEnabled\" to false in config.json (Playnite has no option for it in its settings).",
+                        Loc.Get("LOC_BRP_BuiltInWarning"),
                         NotificationType.Info));
                 }
             }

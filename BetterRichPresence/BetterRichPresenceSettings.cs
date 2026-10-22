@@ -1,3 +1,4 @@
+using BetterRichPresence.Localization;
 using Playnite.SDK;
 using Playnite.SDK.Data;
 using System;
@@ -23,7 +24,8 @@ namespace BetterRichPresence
 
     /// <summary>
     /// Default values of every setting live in the field initializers of this class:
-    /// change them here to change what new users get.
+    /// change them here to change what new users get. Default texts with words in them
+    /// come from Localization/&lt;language&gt;.xaml (LOC_BRP_Default*).
     /// </summary>
     public class BetterRichPresenceSettings : ObservableObject
     {
@@ -56,17 +58,17 @@ namespace BetterRichPresence
         public string FallbackImage { get => fallbackImage; set => SetValue(ref fallbackImage, value?.Trim()); }
 
         // Used when Discord knows the game: the activity title already is the game name.
-        private string matchedDetails = "{source} - {platform}";
+        private string matchedDetails = Loc.Get("LOC_BRP_DefaultMatchedDetails");
         public string MatchedDetails { get => matchedDetails; set => SetValue(ref matchedDetails, value); }
 
-        private string matchedState = "{playtime} played";
+        private string matchedState = Loc.Get("LOC_BRP_DefaultMatchedState");
         public string MatchedState { get => matchedState; set => SetValue(ref matchedState, value); }
 
         // Used with the fallback application: the title is "Playnite", so the name must appear here.
-        private string fallbackDetails = "{name}";
+        private string fallbackDetails = Loc.Get("LOC_BRP_DefaultFallbackDetails");
         public string FallbackDetails { get => fallbackDetails; set => SetValue(ref fallbackDetails, value); }
 
-        private string fallbackState = "{source} · {platform}";
+        private string fallbackState = Loc.Get("LOC_BRP_DefaultFallbackState");
         public string FallbackState { get => fallbackState; set => SetValue(ref fallbackState, value); }
 
         private StatusDisplay matchedStatusDisplay = StatusDisplay.Name;
@@ -98,10 +100,10 @@ namespace BetterRichPresence
         private bool showIdlePresence = true;
         public bool ShowIdlePresence { get => showIdlePresence; set => SetValue(ref showIdlePresence, value); }
 
-        private string idleDetails = "Browsing the library";
+        private string idleDetails = Loc.Get("LOC_BRP_DefaultIdleDetails");
         public string IdleDetails { get => idleDetails; set => SetValue(ref idleDetails, value); }
 
-        private string idleState = "{games} games";
+        private string idleState = Loc.Get("LOC_BRP_DefaultIdleState");
         public string IdleState { get => idleState; set => SetValue(ref idleState, value); }
 
         /// <summary>Games whose activity is never shared.</summary>
@@ -109,6 +111,44 @@ namespace BetterRichPresence
 
         /// <summary>Per-game Discord application ID chosen by the user.</summary>
         public Dictionary<Guid, string> ApplicationOverrides { get; set; } = new Dictionary<Guid, string>();
+
+        /// <summary>
+        /// Texts saved while still equal to the English defaults were never edited:
+        /// switch them to the current language's defaults.
+        /// </summary>
+        public void TranslateUneditedDefaults()
+        {
+            // Must match en_US.xaml.
+            if (MatchedDetails == "Launch with {library}")
+            {
+                MatchedDetails = Loc.Get("LOC_BRP_DefaultMatchedDetails");
+            }
+
+            if (MatchedState == "{playtime} played")
+            {
+                MatchedState = Loc.Get("LOC_BRP_DefaultMatchedState");
+            }
+
+            if (FallbackDetails == "{name}")
+            {
+                FallbackDetails = Loc.Get("LOC_BRP_DefaultFallbackDetails");
+            }
+
+            if (FallbackState == "{source} · {platform}")
+            {
+                FallbackState = Loc.Get("LOC_BRP_DefaultFallbackState");
+            }
+
+            if (IdleDetails == "Browsing the library")
+            {
+                IdleDetails = Loc.Get("LOC_BRP_DefaultIdleDetails");
+            }
+
+            if (IdleState == "{games} games")
+            {
+                IdleState = Loc.Get("LOC_BRP_DefaultIdleState");
+            }
+        }
     }
 
     public class BetterRichPresenceSettingsViewModel : ObservableObject, ISettings
@@ -130,9 +170,10 @@ namespace BetterRichPresence
         {
             this.plugin = plugin;
             Settings = plugin.LoadPluginSettings<BetterRichPresenceSettings>() ?? new BetterRichPresenceSettings();
+            Settings.TranslateUneditedDefaults();
             RefreshCatalogCommand = new RelayCommand(async () =>
             {
-                CatalogStatus = "Downloading…";
+                CatalogStatus = Loc.Get("LOC_BRP_CatalogDownloading");
                 await plugin.Catalog.LoadAsync(forceRefresh: true);
                 UpdateCatalogStatus();
             });
@@ -165,7 +206,7 @@ namespace BetterRichPresence
             errors = new List<string>();
             if (!ulong.TryParse(Settings.FallbackApplicationId, out _))
             {
-                errors.Add("The fallback Discord application ID must be a number.");
+                errors.Add(Loc.Get("LOC_BRP_FallbackIdInvalid"));
             }
 
             return errors.Count == 0;
@@ -173,7 +214,7 @@ namespace BetterRichPresence
 
         private void UpdateCatalogStatus()
         {
-            CatalogStatus = $"{plugin.Catalog.Count} games known by Discord";
+            CatalogStatus = Loc.Format("LOC_BRP_CatalogCount", plugin.Catalog.Count);
         }
     }
 }
