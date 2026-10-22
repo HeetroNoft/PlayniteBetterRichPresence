@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:BetterRichPresence">
     <UserControl.Resources>
         <Style TargetType="TextBlock" x:Key="Header" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <!-- BasedOn finds WPF's default TextBlock style, not the theme's: take the theme's text color explicitly. -->
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Margin" Value="0,16,0,6" />
         </Style>
