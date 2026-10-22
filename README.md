@@ -22,7 +22,7 @@ Le Rich Presence de Playnite affiche toujours « Joue à Playnite », avec le no
 Prérequis : SDK .NET 8 ou plus récent (le projet cible .NET Framework 4.6.2 comme Playnite).
 
 ```powershell
-dotnet build BetterRichPresence -c Debug
+.\build.ps1
 ```
 
 Dans Playnite : **Paramètres → For developers → External extensions → Add**, puis choisis le dossier `BetterRichPresence\bin\Debug`. Après chaque build, redémarre Playnite pour recharger l'extension.
@@ -32,7 +32,7 @@ Dans Playnite : **Paramètres → For developers → External extensions → Add
 ## Créer un paquet .pext
 
 ```powershell
-dotnet build BetterRichPresence -c Release
+.\build.ps1 Release
 & "$env:LOCALAPPDATA\Playnite\Toolbox.exe" pack BetterRichPresence\bin\Release dist
 ```
 
