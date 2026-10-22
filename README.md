@@ -39,3 +39,7 @@ dotnet build BetterRichPresence -c Release
 ## Fonctionnement
 
 L'extension parle directement au pipe IPC local de Discord (`\\.\pipe\discord-ipc-N`) au lieu d'utiliser `DiscordRPC.dll`. Playnite charge déjà sa propre version de cette bibliothèque, et une autre version dans le même processus provoquerait des conflits. Ça permet aussi d'utiliser des champs récents comme `status_display_type`.
+
+## Licence
+
+[MIT](LICENSE)
