@@ -16,6 +16,39 @@ Le Rich Presence de Playnite affiche toujours « Joue à Playnite », avec le no
 - Plusieurs jeux lancés en même temps : le plus récent est affiché, puis le précédent quand il se ferme.
 - Reconnexion automatique si Discord est lancé après le jeu.
 
+## Désactiver le Rich Presence intégré de Playnite
+
+Playnite a son propre Rich Presence Discord, activé par défaut. Il faut le couper pour utiliser Better Rich Presence.
+
+### Pourquoi
+
+- **Deux activités en même temps** : les deux se connectent à Discord en parallèle. Ton profil affiche alors à la fois « Joue à Playnite » (le Rich Presence intégré) et l'activité du plugin. Selon Discord, c'est parfois celle de Playnite qui passe en premier.
+- **Pas d'option dans les paramètres** : Playnite 10 n'a aucune case pour le désactiver. Le réglage existe seulement dans son fichier de configuration, sous le nom `DiscordPresenceEnabled`.
+- **Playnite réécrit ce fichier en quittant** : si tu le modifies pendant que Playnite tourne, même réduit dans la zone de notification, ta modification est écrasée à la fermeture. Il faut donc d'abord quitter Playnite complètement.
+
+### Comment
+
+1. **Quitte Playnite complètement** : clic droit sur son icône dans la zone de notification (à côté de l'horloge) → **Quitter**. Fermer la fenêtre ne suffit pas si Playnite est configuré pour se réduire dans la zone de notification.
+2. **Ouvre le fichier de configuration** : appuie sur `Win + R`, colle `%APPDATA%\Playnite\config.json`, puis **OK**. Choisis le Bloc-notes si Windows demande avec quoi l'ouvrir.
+   - Pour une installation portable de Playnite, `config.json` se trouve dans le dossier de Playnite lui-même.
+3. **Trouve le réglage** : `Ctrl + F`, puis cherche `DiscordPresenceEnabled`. Tu trouveras cette ligne :
+
+   ```json
+   "DiscordPresenceEnabled": true,
+   ```
+
+4. **Remplace `true` par `false`**, sans toucher aux guillemets ni à la virgule :
+
+   ```json
+   "DiscordPresenceEnabled": false,
+   ```
+
+5. **Enregistre** (`Ctrl + S`) et relance Playnite.
+
+Au démarrage, Better Rich Presence affiche une notification tant que le Rich Presence intégré est actif. Si elle n'apparaît plus, c'est bon.
+
+Pour revenir au Rich Presence de Playnite, refais la même manipulation en remettant `true`, puis désactive Better Rich Presence dans **Add-ons**.
+
 ## Installation pour le développement
 
 Prérequis : SDK .NET 8 ou plus récent (le projet cible .NET Framework 4.6.2 comme Playnite).
@@ -26,7 +59,7 @@ Prérequis : SDK .NET 8 ou plus récent (le projet cible .NET Framework 4.6.2 co
 
 Dans Playnite : **Paramètres → For developers → External extensions → Add**, puis choisis le dossier `BetterRichPresence\bin\Debug`. Après chaque build, redémarre Playnite pour recharger l'extension.
 
-**Désactive le Rich Presence intégré**, sinon Discord affichera deux activités. Playnite ne propose pas cette option dans ses paramètres : ferme Playnite (y compris depuis la zone de notification), puis passe `"DiscordPresenceEnabled"` à `false` dans `%APPDATA%\Playnite\config.json`. L'extension te prévient au démarrage s'il est encore actif.
+Pense aussi à [désactiver le Rich Presence intégré de Playnite](#désactiver-le-rich-presence-intégré-de-playnite).
 
 ## Créer un paquet .pext
 
