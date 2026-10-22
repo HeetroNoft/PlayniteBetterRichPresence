@@ -6,7 +6,7 @@
     <LangVersion>latest</LangVersion>
     <AssemblyName>BetterRichPresence</AssemblyName>
     <RootNamespace>BetterRichPresence</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
