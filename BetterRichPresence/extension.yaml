@@ -1,0 +1,9 @@
+Id: BetterRichPresence_48a8ac35-6a9b-467e-ab79-153ed2fb6cab
+Name: Better Rich Presence
+Author: Heet
+Version: 0.1.0
+Module: BetterRichPresence.dll
+Type: GenericPlugin
+Links:
+  - Name: GitHub
+    Url: https://github.com/HeetroNoft/PlayniteBetterRichPresence
