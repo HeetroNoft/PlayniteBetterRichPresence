@@ -27,17 +27,20 @@ namespace BetterRichPresence
     /// </summary>
     public class BetterRichPresenceSettings : ObservableObject
     {
-        /// <summary>The plugin's own Discord application, used when Discord doesn't know the game.</summary>
-        public const string DefaultApplicationId = "1562799211265663018";
+        /// <summary>
+        /// Playnite's own Discord application, used when Discord doesn't know the game. Unlike a new
+        /// application, Discord shows its icon next to the user's name instead of a "?".
+        /// </summary>
+        public const string DefaultApplicationId = "689105200262414377";
 
         /// <summary>Asset key uploaded to the plugin's Discord application.</summary>
         public const string DefaultFallbackImage = "playnite-avatar";
 
-        /// <summary><see cref="DefaultFallbackImage"/> served by Discord's CDN, usable from any application.</summary>
+        /// <summary>
+        /// The Playnite logo uploaded to the plugin's own Discord application, served by Discord's CDN
+        /// so it shows under any application, including games Discord knows.
+        /// </summary>
         public const string PlayniteLogoUrl = "https://cdn.discordapp.com/app-assets/1562799211265663018/1562800353509122280.png";
-
-        /// <summary>Playnite's application, the default of earlier versions; migrated to <see cref="DefaultApplicationId"/>.</summary>
-        public const string LegacyApplicationId = "689105200262414377";
 
         private bool enabled = true;
         public bool Enabled { get => enabled; set => SetValue(ref enabled, value); }
@@ -133,10 +136,6 @@ namespace BetterRichPresence
         {
             this.plugin = plugin;
             Settings = plugin.LoadPluginSettings<BetterRichPresenceSettings>() ?? new BetterRichPresenceSettings();
-            if (Settings.FallbackApplicationId == BetterRichPresenceSettings.LegacyApplicationId)
-            {
-                Settings.FallbackApplicationId = BetterRichPresenceSettings.DefaultApplicationId;
-            }
             RefreshCatalogCommand = new RelayCommand(async () =>
             {
                 CatalogStatus = "Downloading…";
