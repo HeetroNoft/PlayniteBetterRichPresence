@@ -1,0 +1,72 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Missing keys fall back to en_US. -->
+
+    <!-- Settings: Discord application -->
+    <sys:String x:Key="LOC_BRP_Enabled">在 Discord 上分享我的活动</sys:String>
+    <sys:String x:Key="LOC_BRP_HeaderApplication">Discord 应用</sys:String>
+    <sys:String x:Key="LOC_BRP_UseGameApplications">当 Discord 识别该游戏时显示“正在玩 &lt;游戏&gt;”</sys:String>
+    <sys:String x:Key="LOC_BRP_RefreshCatalog">刷新列表</sys:String>
+    <sys:String x:Key="LOC_BRP_CatalogDownloading">正在下载…</sys:String>
+    <sys:String x:Key="LOC_BRP_CatalogCount">Discord 已知 {0} 款游戏</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackApplicationId">备用应用 ID：</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackImage">备用图片：</sys:String>
+    <sys:String x:Key="LOC_BRP_ResetApplication">恢复为插件自带的应用</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackHelp">用于 Discord 不认识的游戏以及浏览游戏库时。图片可以是备用应用的资源键（Discord Developer Portal 中的 Rich Presence → Art Assets），也可以是图片 URL。</sys:String>
+
+    <!-- Settings: presence text -->
+    <sys:String x:Key="LOC_BRP_HeaderMatched">Discord 识别游戏时的文字</sys:String>
+    <sys:String x:Key="LOC_BRP_HeaderFallback">使用备用应用时的文字</sys:String>
+    <sys:String x:Key="LOC_BRP_Details">详情：</sys:String>
+    <sys:String x:Key="LOC_BRP_State">状态：</sys:String>
+    <sys:String x:Key="LOC_BRP_MemberListShows">成员列表显示：</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusGameName">游戏名称</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusApplicationName">应用名称</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusState">状态</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusDetails">详情</sys:String>
+    <sys:String x:Key="LOC_BRP_GamePlaceholders">可用变量：{name} {platform} {source} {library} {playtime} {playcount} {completion} {genre} {developer} {year} {score}。空值旁边的分隔符会被移除，所有值都为空的行会被隐藏。</sys:String>
+
+    <!-- Settings: display -->
+    <sys:String x:Key="LOC_BRP_HeaderDisplay">显示</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowElapsedTime">显示本次游戏已用时间</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowPlayniteBadge">在游戏图片上以小徽标显示 Playnite 标志</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowGameImage">显示游戏图片</sys:String>
+    <sys:String x:Key="LOC_BRP_GameImageKind">要显示的 Playnite 图片：</sys:String>
+    <sys:String x:Key="LOC_BRP_ImageIcon">图标</sys:String>
+    <sys:String x:Key="LOC_BRP_ImageCover">封面</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadImages">将 Playnite 图片上传到 ImgBB，以便 Discord 显示</sys:String>
+    <sys:String x:Key="LOC_BRP_ImgbbApiKey">ImgBB API 密钥：</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadHelpBefore">没有密钥时不会上传任何内容。Discord 只能显示在线图片。每张图片会转换为 PNG 并只上传一次到 ImgBB：任何拥有链接的人都能看到。免费 API 密钥可在此获取：</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadHelpAfter">（登录后点击“Get API key”）。关闭此选项时或上传完成前，将显示 Steam 封面或该游戏的 Discord 图标。</sys:String>
+
+    <!-- Settings: browsing -->
+    <sys:String x:Key="LOC_BRP_HeaderIdle">未运行游戏时</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowIdlePresence">显示我正在浏览 Playnite</sys:String>
+    <sys:String x:Key="LOC_BRP_IdlePlaceholders">可用变量：{games} 游戏库中的游戏数，{installed} 已安装的游戏数，{favorites} 收藏的游戏数，{played} 至少玩过一次的游戏数，{playtime} 总游戏时长。隐藏的游戏不计入。</sys:String>
+    <sys:String x:Key="LOC_BRP_Signature">Better Rich Presence，作者 Heet ·</sys:String>
+
+    <!-- Settings: validation -->
+    <sys:String x:Key="LOC_BRP_FallbackIdInvalid">备用 Discord 应用 ID 必须是数字。</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_BRP_MenuHide">在 Discord 上隐藏活动</sys:String>
+    <sys:String x:Key="LOC_BRP_MenuShare">在 Discord 上分享活动</sys:String>
+    <sys:String x:Key="LOC_BRP_MenuSetApplication">设置 Discord 应用 ID…</sys:String>
+    <sys:String x:Key="LOC_BRP_SetApplicationPrompt" xml:space="preserve">此游戏使用的 Discord 应用 ID。&#10;留空则自动检测。</sys:String>
+    <sys:String x:Key="LOC_BRP_InvalidApplicationId">Discord 应用 ID 是一个数字。</sys:String>
+
+    <!-- Notifications -->
+    <sys:String x:Key="LOC_BRP_BuiltInWarning">Better Rich Presence：Playnite 内置的 Discord 状态也已启用，Discord 可能会显示两个活动。请关闭 Playnite，并在 config.json 中将“DiscordPresenceEnabled”设为 false（Playnite 的设置中没有此选项）。</sys:String>
+
+    <!-- Seen by friends on Discord: defaults for new users, and the badge tooltip -->
+    <sys:String x:Key="LOC_BRP_DefaultMatchedDetails">通过 {library} 启动</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultMatchedState">已游玩 {playtime}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultFallbackDetails">{name}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultFallbackState">{source} · {platform}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultIdleDetails">正在浏览游戏库</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultIdleState">{games} 款游戏</sys:String>
+    <sys:String x:Key="LOC_BRP_BadgeText">通过 Playnite</sys:String>
+
+</ResourceDictionary>

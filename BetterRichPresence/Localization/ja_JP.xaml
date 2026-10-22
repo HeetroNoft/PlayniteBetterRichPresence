@@ -1,0 +1,72 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Missing keys fall back to en_US. -->
+
+    <!-- Settings: Discord application -->
+    <sys:String x:Key="LOC_BRP_Enabled">Discord でアクティビティを共有する</sys:String>
+    <sys:String x:Key="LOC_BRP_HeaderApplication">Discord アプリケーション</sys:String>
+    <sys:String x:Key="LOC_BRP_UseGameApplications">Discord がゲームを認識している場合は「&lt;ゲーム&gt; をプレイ中」と表示する</sys:String>
+    <sys:String x:Key="LOC_BRP_RefreshCatalog">リストを更新</sys:String>
+    <sys:String x:Key="LOC_BRP_CatalogDownloading">ダウンロード中…</sys:String>
+    <sys:String x:Key="LOC_BRP_CatalogCount">Discord が認識しているゲーム：{0} 本</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackApplicationId">代替アプリケーション ID：</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackImage">代替画像：</sys:String>
+    <sys:String x:Key="LOC_BRP_ResetApplication">プラグインのアプリケーションに戻す</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackHelp">Discord が認識しないゲームと、ライブラリ閲覧中に使用されます。画像は代替アプリケーションのアセットキー（Discord Developer Portal の Rich Presence → Art Assets）または画像 URL です。</sys:String>
+
+    <!-- Settings: presence text -->
+    <sys:String x:Key="LOC_BRP_HeaderMatched">Discord がゲームを認識している場合のテキスト</sys:String>
+    <sys:String x:Key="LOC_BRP_HeaderFallback">代替アプリケーション使用時のテキスト</sys:String>
+    <sys:String x:Key="LOC_BRP_Details">詳細：</sys:String>
+    <sys:String x:Key="LOC_BRP_State">状態：</sys:String>
+    <sys:String x:Key="LOC_BRP_MemberListShows">メンバーリストの表示：</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusGameName">ゲーム名</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusApplicationName">アプリケーション名</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusState">状態</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusDetails">詳細</sys:String>
+    <sys:String x:Key="LOC_BRP_GamePlaceholders">変数：{name} {platform} {source} {library} {playtime} {playcount} {completion} {genre} {developer} {year} {score}。空の値の隣にある区切り文字は削除され、すべての値が空の行は非表示になります。</sys:String>
+
+    <!-- Settings: display -->
+    <sys:String x:Key="LOC_BRP_HeaderDisplay">表示</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowElapsedTime">セッションの経過時間を表示する</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowPlayniteBadge">ゲーム画像に Playnite のロゴを小さなバッジとして表示する</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowGameImage">ゲーム画像を表示する</sys:String>
+    <sys:String x:Key="LOC_BRP_GameImageKind">表示する Playnite の画像：</sys:String>
+    <sys:String x:Key="LOC_BRP_ImageIcon">アイコン</sys:String>
+    <sys:String x:Key="LOC_BRP_ImageCover">カバー</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadImages">Discord で表示できるよう Playnite の画像を ImgBB にアップロードする</sys:String>
+    <sys:String x:Key="LOC_BRP_ImgbbApiKey">ImgBB API キー：</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadHelpBefore">キーがない場合は何もアップロードされません。Discord はオンラインの画像しか表示できません。各画像は PNG に変換され、ImgBB に一度だけアップロードされます。リンクを知っている人は誰でも閲覧できます。無料の API キーはこちらで取得できます：</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadHelpAfter">（ログイン後「Get API key」）。このオプションがオフの場合、またはアップロードが終わるまでは、Steam のカバーまたはゲームの Discord アイコンが表示されます。</sys:String>
+
+    <!-- Settings: browsing -->
+    <sys:String x:Key="LOC_BRP_HeaderIdle">ゲームを起動していないとき</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowIdlePresence">Playnite を閲覧中であることを表示する</sys:String>
+    <sys:String x:Key="LOC_BRP_IdlePlaceholders">変数：{games} ライブラリのゲーム数、{installed} インストール済みのゲーム数、{favorites} お気に入りのゲーム数、{played} 一度以上プレイしたゲーム数、{playtime} 総プレイ時間。非表示のゲームは数えません。</sys:String>
+    <sys:String x:Key="LOC_BRP_Signature">Better Rich Presence by Heet ·</sys:String>
+
+    <!-- Settings: validation -->
+    <sys:String x:Key="LOC_BRP_FallbackIdInvalid">代替 Discord アプリケーション ID は数字である必要があります。</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_BRP_MenuHide">Discord でアクティビティを非表示にする</sys:String>
+    <sys:String x:Key="LOC_BRP_MenuShare">Discord でアクティビティを共有する</sys:String>
+    <sys:String x:Key="LOC_BRP_MenuSetApplication">Discord アプリケーション ID を設定…</sys:String>
+    <sys:String x:Key="LOC_BRP_SetApplicationPrompt" xml:space="preserve">このゲームに使用する Discord アプリケーション ID。&#10;空欄にすると自動で検出します。</sys:String>
+    <sys:String x:Key="LOC_BRP_InvalidApplicationId">Discord アプリケーション ID は数字です。</sys:String>
+
+    <!-- Notifications -->
+    <sys:String x:Key="LOC_BRP_BuiltInWarning">Better Rich Presence：Playnite 内蔵の Discord プレゼンスも有効になっているため、Discord に 2 つのアクティビティが表示される場合があります。Playnite を終了し、config.json の「DiscordPresenceEnabled」を false に変更してください（Playnite の設定にはこのオプションがありません）。</sys:String>
+
+    <!-- Seen by friends on Discord: defaults for new users, and the badge tooltip -->
+    <sys:String x:Key="LOC_BRP_DefaultMatchedDetails">{library} から起動</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultMatchedState">プレイ時間 {playtime}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultFallbackDetails">{name}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultFallbackState">{source} · {platform}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultIdleDetails">ライブラリを閲覧中</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultIdleState">ゲーム {games} 本</sys:String>
+    <sys:String x:Key="LOC_BRP_BadgeText">Playnite 経由</sys:String>
+
+</ResourceDictionary>

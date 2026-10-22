@@ -49,6 +49,20 @@ Au démarrage, Better Rich Presence affiche une notification tant que le Rich Pr
 
 Pour revenir au Rich Presence de Playnite, refais la même manipulation en remettant `true`, puis désactive Better Rich Presence dans **Add-ons**.
 
+## Traductions
+
+Le plugin suit la langue choisie dans Playnite (**Paramètres → General → Playnite language**). Il est disponible en 12 langues : anglais, français, allemand, espagnol, italien, portugais brésilien, polonais, russe, turc, chinois simplifié, japonais et coréen. Pour une autre langue, ou s'il manque une traduction, les textes s'affichent en anglais.
+
+Hors anglais et français, les traductions ont été générées automatiquement. Les corrections de locuteurs natifs sont les bienvenues.
+
+Sont traduits : l'écran des paramètres, le menu clic droit, les messages, et les textes par défaut de la présence Discord (« Parcourt sa bibliothèque », « 12h 30m de jeu »…). Les textes que tu as personnalisés ne changent pas.
+
+**Ajouter une langue :**
+
+1. Copie `BetterRichPresence/Localization/en_US.xaml` sous le code de langue de Playnite, par exemple `de_DE.xaml` (la liste des codes se trouve dans le dossier `Localization` de Playnite).
+2. Traduis le texte entre les balises, sans toucher aux clés `x:Key` ni aux variables entre accolades (`{playtime}`, `{0}`…).
+3. Recompile : tous les fichiers de ce dossier sont intégrés automatiquement à la DLL.
+
 ## Installation pour le développement
 
 Prérequis : SDK .NET 8 ou plus récent (le projet cible .NET Framework 4.6.2 comme Playnite).

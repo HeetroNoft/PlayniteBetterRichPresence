@@ -1,0 +1,72 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Missing keys fall back to en_US. -->
+
+    <!-- Settings: Discord application -->
+    <sys:String x:Key="LOC_BRP_Enabled">Udostępniaj moją aktywność na Discordzie</sys:String>
+    <sys:String x:Key="LOC_BRP_HeaderApplication">Aplikacja Discord</sys:String>
+    <sys:String x:Key="LOC_BRP_UseGameApplications">Pokazuj „Gra w &lt;gra&gt;”, gdy Discord zna grę</sys:String>
+    <sys:String x:Key="LOC_BRP_RefreshCatalog">Odśwież listę</sys:String>
+    <sys:String x:Key="LOC_BRP_CatalogDownloading">Pobieranie…</sys:String>
+    <sys:String x:Key="LOC_BRP_CatalogCount">Gry znane Discordowi: {0}</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackApplicationId">ID aplikacji zapasowej:</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackImage">Obraz zapasowy:</sys:String>
+    <sys:String x:Key="LOC_BRP_ResetApplication">Przywróć aplikację wtyczki</sys:String>
+    <sys:String x:Key="LOC_BRP_FallbackHelp">Używana dla gier, których Discord nie zna, oraz podczas przeglądania biblioteki. Obraz to klucz zasobu aplikacji zapasowej (Rich Presence → Art Assets w Discord Developer Portal) lub adres URL obrazu.</sys:String>
+
+    <!-- Settings: presence text -->
+    <sys:String x:Key="LOC_BRP_HeaderMatched">Tekst, gdy Discord zna grę</sys:String>
+    <sys:String x:Key="LOC_BRP_HeaderFallback">Tekst z aplikacją zapasową</sys:String>
+    <sys:String x:Key="LOC_BRP_Details">Szczegóły:</sys:String>
+    <sys:String x:Key="LOC_BRP_State">Stan:</sys:String>
+    <sys:String x:Key="LOC_BRP_MemberListShows">Lista członków pokazuje:</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusGameName">Nazwę gry</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusApplicationName">Nazwę aplikacji</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusState">Stan</sys:String>
+    <sys:String x:Key="LOC_BRP_StatusDetails">Szczegóły</sys:String>
+    <sys:String x:Key="LOC_BRP_GamePlaceholders">Zmienne: {name} {platform} {source} {library} {playtime} {playcount} {completion} {genre} {developer} {year} {score}. Separatory obok pustej wartości są usuwane, a linia, której wszystkie wartości są puste, jest ukrywana.</sys:String>
+
+    <!-- Settings: display -->
+    <sys:String x:Key="LOC_BRP_HeaderDisplay">Wyświetlanie</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowElapsedTime">Pokazuj czas trwania sesji</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowPlayniteBadge">Pokazuj logo Playnite jako małą odznakę na obrazie gry</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowGameImage">Pokazuj obraz gry</sys:String>
+    <sys:String x:Key="LOC_BRP_GameImageKind">Obraz Playnite do wyświetlenia:</sys:String>
+    <sys:String x:Key="LOC_BRP_ImageIcon">Ikona</sys:String>
+    <sys:String x:Key="LOC_BRP_ImageCover">Okładka</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadImages">Wysyłaj obrazy Playnite do ImgBB, aby Discord mógł je wyświetlić</sys:String>
+    <sys:String x:Key="LOC_BRP_ImgbbApiKey">Klucz API ImgBB:</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadHelpBefore">Bez klucza nic nie jest wysyłane. Discord może wyświetlać tylko obrazy dostępne online. Każdy obraz jest konwertowany do PNG i wysyłany do ImgBB tylko raz: każdy, kto ma link, może go zobaczyć. Darmowy klucz API można uzyskać na</sys:String>
+    <sys:String x:Key="LOC_BRP_UploadHelpAfter">(zaloguj się, a potem „Get API key”). Gdy ta opcja jest wyłączona lub wysyłanie jeszcze trwa, wyświetlana jest okładka ze Steama lub ikona gry z Discorda.</sys:String>
+
+    <!-- Settings: browsing -->
+    <sys:String x:Key="LOC_BRP_HeaderIdle">Gdy żadna gra nie jest uruchomiona</sys:String>
+    <sys:String x:Key="LOC_BRP_ShowIdlePresence">Pokazuj, że przeglądam Playnite</sys:String>
+    <sys:String x:Key="LOC_BRP_IdlePlaceholders">Zmienne: {games} gry w bibliotece, {installed} zainstalowane gry, {favorites} ulubione gry, {played} gry uruchomione co najmniej raz, {playtime} łączny czas gry. Ukryte gry nie są liczone.</sys:String>
+    <sys:String x:Key="LOC_BRP_Signature">Better Rich Presence autorstwa Heet ·</sys:String>
+
+    <!-- Settings: validation -->
+    <sys:String x:Key="LOC_BRP_FallbackIdInvalid">ID zapasowej aplikacji Discord musi być liczbą.</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_BRP_MenuHide">Ukryj aktywność na Discordzie</sys:String>
+    <sys:String x:Key="LOC_BRP_MenuShare">Udostępniaj aktywność na Discordzie</sys:String>
+    <sys:String x:Key="LOC_BRP_MenuSetApplication">Ustaw ID aplikacji Discord…</sys:String>
+    <sys:String x:Key="LOC_BRP_SetApplicationPrompt" xml:space="preserve">ID aplikacji Discord dla tej gry.&#10;Pozostaw puste, aby wykryć je automatycznie.</sys:String>
+    <sys:String x:Key="LOC_BRP_InvalidApplicationId">ID aplikacji Discord to liczba.</sys:String>
+
+    <!-- Notifications -->
+    <sys:String x:Key="LOC_BRP_BuiltInWarning">Better Rich Presence: wbudowana obecność Discord w Playnite jest również włączona, więc Discord może pokazywać dwie aktywności. Zamknij Playnite i ustaw „DiscordPresenceEnabled” na false w pliku config.json (Playnite nie ma tej opcji w ustawieniach).</sys:String>
+
+    <!-- Seen by friends on Discord: defaults for new users, and the badge tooltip -->
+    <sys:String x:Key="LOC_BRP_DefaultMatchedDetails">Uruchomiono przez {library}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultMatchedState">Czas gry: {playtime}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultFallbackDetails">{name}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultFallbackState">{source} · {platform}</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultIdleDetails">Przegląda bibliotekę</sys:String>
+    <sys:String x:Key="LOC_BRP_DefaultIdleState">Gry: {games}</sys:String>
+    <sys:String x:Key="LOC_BRP_BadgeText">przez Playnite</sys:String>
+
+</ResourceDictionary>
