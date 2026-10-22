@@ -24,4 +24,16 @@
     <None Include="extension.yaml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <!--
+    C# Dev Kit's design-time builds don't run the WPF markup compiler for .NET Framework
+    projects, so the editor never sees InitializeComponent. Feed it the code the last real
+    build generated; real builds are untouched.
+  -->
+  <Target Name="AddXamlGeneratedCodeForEditor" BeforeTargets="CoreCompile" Condition="'$(DesignTimeBuild)' == 'true'">
+    <ItemGroup>
+      <_XamlGeneratedCode Include="$(IntermediateOutputPath)*.g.cs" />
+      <Compile Include="@(_XamlGeneratedCode)" Condition="'@(Compile->AnyHaveMetadataValue('Identity', '%(_XamlGeneratedCode.Identity)'))' != 'true'" />
+    </ItemGroup>
+  </Target>
+
 </Project>
