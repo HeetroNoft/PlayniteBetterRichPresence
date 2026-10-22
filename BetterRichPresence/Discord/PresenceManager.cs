@@ -22,6 +22,7 @@ namespace BetterRichPresence.Discord
     {
         private static readonly ILogger logger = LogManager.GetLogger();
         private static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(15);
+        private static readonly TimeSpan ResendDelay = TimeSpan.FromSeconds(3);
 
         private readonly object sync = new object();
         private readonly AutoResetEvent wake = new AutoResetEvent(false);
@@ -33,6 +34,8 @@ namespace BetterRichPresence.Discord
         private bool disposed;
         private DiscordIpcClient client;
         private int clientPid;
+        // Only used by the worker thread.
+        private DateTime? resendAtUtc;
 
         public PresenceManager()
         {
@@ -67,7 +70,10 @@ namespace BetterRichPresence.Discord
         {
             while (true)
             {
-                wake.WaitOne(RetryInterval);
+                var untilResend = resendAtUtc - DateTime.UtcNow;
+                wake.WaitOne(untilResend.HasValue && untilResend.Value < RetryInterval
+                    ? (untilResend.Value > TimeSpan.Zero ? untilResend.Value : TimeSpan.Zero)
+                    : RetryInterval);
 
                 Presence target;
                 lock (sync)
@@ -75,6 +81,12 @@ namespace BetterRichPresence.Discord
                     if (disposed)
                     {
                         break;
+                    }
+
+                    if (resendAtUtc <= DateTime.UtcNow)
+                    {
+                        resendAtUtc = null;
+                        applied = false;
                     }
 
                     if (applied && (desired == null || client?.IsConnected == true))
@@ -114,6 +126,13 @@ namespace BetterRichPresence.Discord
                 // A new connection per process, so no activity stays attached to the previous one.
                 if (client == null || client.ClientId != target.ApplicationId || clientPid != targetPid || !client.IsConnected)
                 {
+                    if (client != null)
+                    {
+                        // Discord may handle the old connection closing after the new activity arrives,
+                        // wiping it along; sending it again once that settled makes it stick.
+                        resendAtUtc = DateTime.UtcNow + ResendDelay;
+                    }
+
                     Clear();
                     logger.Debug($"Connecting to Discord as app {target.ApplicationId} for pid {targetPid}");
                     client = new DiscordIpcClient(target.ApplicationId);
