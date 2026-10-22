@@ -130,6 +130,12 @@
             </Grid>
             <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Opacity="0.7"
                        Text="Placeholders: {games} games in the library, {installed} installed games, {favorites} favorite games, {played} games played at least once, {playtime} total playtime. Hidden games are not counted." />
+
+            <Separator Margin="0,24,0,8" Opacity="0.3" />
+            <TextBlock HorizontalAlignment="Center" Opacity="0.7">
+                Better Rich Presence by Heet ·
+                <Hyperlink NavigateUri="https://github.com/HeetroNoft" RequestNavigate="Hyperlink_RequestNavigate">github.com/HeetroNoft</Hyperlink>
+            </TextBlock>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
