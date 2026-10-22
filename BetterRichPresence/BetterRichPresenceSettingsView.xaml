@@ -87,6 +87,8 @@
 
             <TextBlock Style="{StaticResource Header}" Text="Display" />
             <CheckBox Content="Show elapsed time for the session" IsChecked="{Binding Settings.ShowElapsedTime}" />
+            <CheckBox Content="Show the Playnite logo as a small badge on the game image"
+                      IsChecked="{Binding Settings.ShowPlayniteBadge}" />
             <CheckBox Content="Show a game image" IsChecked="{Binding Settings.ShowGameImage}" />
             <StackPanel Margin="24,0,0,0" IsEnabled="{Binding Settings.ShowGameImage}">
                 <DockPanel Margin="0,4">
@@ -96,8 +98,6 @@
                         <ComboBoxItem Content="Cover" Tag="{x:Static local:GameImageKind.Cover}" />
                     </ComboBox>
                 </DockPanel>
-                <CheckBox Content="Show the Playnite logo as a small badge on the game image"
-                          IsChecked="{Binding Settings.ShowPlayniteBadge}" />
                 <CheckBox Content="Upload Playnite images to ImgBB so Discord can display them"
                           IsChecked="{Binding Settings.UploadLocalImages}" />
                 <DockPanel Margin="24,4,0,0" IsEnabled="{Binding Settings.UploadLocalImages}">

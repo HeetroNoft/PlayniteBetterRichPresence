@@ -61,6 +61,13 @@ namespace BetterRichPresence
             var fallbackImage = matched || string.IsNullOrEmpty(settings.FallbackImage) ? null : settings.FallbackImage;
             var assets = new Dictionary<string, object>();
             var image = settings.ShowGameImage ? GameImage(game, app) : null;
+            if (image == null && settings.ShowPlayniteBadge)
+            {
+                // Discord only draws the small image over a large one: give the badge the icon
+                // Discord would show for the game anyway.
+                image = app?.IconUrl;
+            }
+
             if (image != null)
             {
                 assets["large_image"] = image;
