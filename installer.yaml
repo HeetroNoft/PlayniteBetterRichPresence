@@ -1,0 +1,13 @@
+AddonId: BetterRichPresence_48a8ac35-6a9b-467e-ab79-153ed2fb6cab
+Packages:
+  - Version: 0.1.0
+    RequiredApiVersion: 6.11.0
+    ReleaseDate: 2026-10-22
+    PackageUrl: https://github.com/HeetroNoft/PlayniteBetterRichPresence/releases/download/v0.1.0/BetterRichPresence_48a8ac35-6a9b-467e-ab79-153ed2fb6cab_0_1_0.pext
+    Changelog:
+      - First release
+      - Shows "Playing <game>" for games Discord knows, instead of "Playing Playnite"
+      - Uses the icon or cover chosen in Playnite, with an optional Playnite badge
+      - Customizable text with placeholders ({name}, {library}, {platform}, {playtime}…)
+      - Optional presence while browsing the library
+      - Hide a game or force its Discord application from its context menu
